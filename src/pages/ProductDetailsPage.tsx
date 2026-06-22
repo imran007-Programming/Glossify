@@ -4,7 +4,7 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
 import ProductCard from "../components/product/ProductCard";
-import BreadCrumb from "../components/Breadcrumb/Breadcrumb";
+import BreadCrumb from "../components/layout/Breadcrumb";
 import StarRating from "../components/product/StarRating";
 import ProductNotFound from "../components/product/ProductNotFound";
 import ProductImageGallery from "../components/product/ProductImageGallery";

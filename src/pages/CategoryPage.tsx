@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { products } from "../data/products";
 import ProductCard from "../components/product/ProductCard";
-import BreadCrumb from "../components/Breadcrumb/Breadcrumb";
+import BreadCrumb from "../components/layout/Breadcrumb";
 
 export default function CategoryPage() {
   const { categoryName } = useParams<{ categoryName: string }>();

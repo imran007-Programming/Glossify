@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import WishlistPage from "./pages/WishlistPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   useEffect(() => {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/product/:name" element={<ProductDetailsPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>

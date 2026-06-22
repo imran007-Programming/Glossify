@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { products } from "../data/products";
 import { calcDiscount } from "../utils/priceUtils";
+import { useCart } from "./useCart";
+import { useWishlist } from "./useWishlist";
 
 export const useProductDetails = (name: string | undefined) => {
+  const { addToCart, openDrawer } = useCart();
+  const { toggleWishlist, isWishlisted } = useWishlist();
+
   const [quantity, setQuantity] = useState(1);
-  const [wishlisted, setWishlisted] = useState(false);
-  const [addedToCart, setAddedToCart] = useState(false);
   const [activeThumb, setActiveThumb] = useState(0);
 
   const product = products.find((pd) => pd.name === name);
@@ -19,15 +22,16 @@ export const useProductDetails = (name: string | undefined) => {
   const imageGallery = product ? [product.image, product.image, product.image] : [];
 
   const handleAddToCart = () => {
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000);
+    if (!product) return;
+    addToCart(product, quantity);
+    openDrawer();
+
+
   };
 
   const handleQuantityChange = (delta: number) => {
     setQuantity((q) => Math.max(1, q + delta));
   };
-
-  const toggleWishlist = () => setWishlisted((w) => !w);
 
   return {
     product,
@@ -35,12 +39,12 @@ export const useProductDetails = (name: string | undefined) => {
     relatedProducts,
     imageGallery,
     quantity,
-    wishlisted,
-    addedToCart,
+    wishlisted: product ? isWishlisted(product.id) : false,
+
     activeThumb,
     setActiveThumb,
     handleAddToCart,
     handleQuantityChange,
-    toggleWishlist,
+    toggleWishlist: () => product && toggleWishlist(product),
   };
 };

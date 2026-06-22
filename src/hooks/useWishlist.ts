@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { WishlistContext } from '../context/WishlistContext';
 
 export const useWishlist = () => {
-  const ctx = useContext(WishlistContext);
-  if (!ctx) throw new Error('useWishlist must be used inside WishlistProvider');
-  return ctx;
+  const context = useContext(WishlistContext);
+  if (!context) throw new Error('useWishlist must be used inside WishlistProvider');
+  return context;
 };

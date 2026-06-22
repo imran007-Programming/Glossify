@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { BsHandbag } from "react-icons/bs";
 import { HiOutlineHeart } from "react-icons/hi";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import Button from "../components/ui/Button";
 import { MdVerified } from "react-icons/md";
 import ProductCard from "../components/product/ProductCard";
 import BreadCrumb from "../components/layout/Breadcrumb";
@@ -20,7 +21,7 @@ export default function ProductDetailsPage() {
     imageGallery,
     quantity,
     wishlisted,
-    addedToCart,
+
     activeThumb,
     setActiveThumb,
     handleAddToCart,
@@ -34,6 +35,7 @@ export default function ProductDetailsPage() {
 
   return (
     <div>
+      {/* top BreadCrumb */}
       <BreadCrumb
         crumbs={[
           { label: "Home", to: "/" },
@@ -48,7 +50,7 @@ export default function ProductDetailsPage() {
       <div className="section">
         <div className="section-wrap">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16">
-            {/* LEFT — Image Gallery */}
+            {/* LEFT Side  Image Gallery  */}
             <ProductImageGallery
               images={imageGallery}
               productName={product.name}
@@ -127,7 +129,7 @@ export default function ProductDetailsPage() {
                 {product.description}
               </p>
 
-              {/* Key Benefits */}
+              {/*  Benefits */}
               {product.benefits.length > 0 && (
                 <div>
                   <h3 className="font-inter text-sm font-semibold text-gray-900 mb-3">
@@ -148,7 +150,7 @@ export default function ProductDetailsPage() {
                 </div>
               )}
 
-              {/* Quantity + Cart */}
+              {/* Quantity */}
               <div className="flex items-center gap-3 pt-2">
                 {/* Quantity selector */}
                 <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden">
@@ -169,19 +171,15 @@ export default function ProductDetailsPage() {
                   </button>
                 </div>
 
-                {/* Add to Cart */}
-                <button
-                  onClick={handleAddToCart}
+                {/* Add to Cart button */}
+                <Button
+                  icon={<BsHandbag size={14} />}
+                  fullWidth
                   disabled={!product.inStock}
-                  className={`flex-1 flex items-center justify-center gap-2 h-11 rounded-xl font-inter text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    addedToCart
-                      ? "bg-emerald-500 text-white"
-                      : "bg-gray-900 hover:bg-pink-500 text-white"
-                  }`}
+                  onClick={handleAddToCart}
                 >
-                  <BsHandbag size={14} />
-                  {addedToCart ? "Added to Cart!" : "Add to Cart"}
-                </button>
+                  Add to Cart
+                </Button>
               </div>
 
               {/* Trust badges */}
@@ -189,7 +187,7 @@ export default function ProductDetailsPage() {
             </div>
           </div>
 
-          {/* Related Products */}
+          {/* showing the related products  */}
           {relatedProducts.length > 0 && (
             <div className="mt-20">
               <div className="mb-8">

@@ -3,12 +3,13 @@ import { FiSearch, FiUser } from "react-icons/fi";
 import { BsHandbag, BsMic } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
+import { useWishlist } from "../../hooks/useWishlist";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
-
-  const cartCount = 1;
-  const wishlistCount = 0;
+  const { totalItems, openDrawer } = useCart();
+  const { items: wishlistItems } = useWishlist();
 
   return (
     <nav className="w-full bg-white  border-b border-gray-100 shadow-sm">
@@ -65,29 +66,31 @@ export default function Navbar() {
         <div className="flex items-center gap-1 flex-shrink-0">
           {/* Cart */}
           <button
+            onClick={openDrawer}
             className="relative p-2 text-gray-600 hover:text-blue-500 transition-colors"
             aria-label="Cart"
           >
             <BsHandbag size={24} strokeWidth={0.3} />
-            {cartCount > 0 && (
+            {totalItems > 0 && (
               <span className="absolute top-0.5 right-0.5 bg-blue-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
-                {cartCount}
+                {totalItems}
               </span>
             )}
           </button>
 
           {/* Wishlist */}
-          <button
+          <Link
+            to="/wishlist"
             className="relative p-2 text-gray-600 hover:text-blue-500 transition-colors"
             aria-label="Wishlist"
           >
             <AiOutlineHeart size={26} />
-            {wishlistCount >= 0 && (
+            {wishlistItems.length > 0 && (
               <span className="absolute top-0.5 right-0.5 bg-blue-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
-                {wishlistCount}
+                {wishlistItems.length}
               </span>
             )}
-          </button>
+          </Link>
 
           {/* Account */}
           <button

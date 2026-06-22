@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
 import CartItem from "./CartItem";
+import FreeShippingBar from "./FreeShippingBar";
 
 export default function CartDrawer() {
   const { items, totalItems, totalPrice, isDrawerOpen, closeDrawer } =
@@ -47,6 +48,9 @@ export default function CartDrawer() {
           </button>
         </div>
 
+        {/* Free shipping progress */}
+        {items.length > 0 && <FreeShippingBar total={totalPrice} />}
+
         {/* Items */}
         <div
           data-lenis-prevent
@@ -83,7 +87,7 @@ export default function CartDrawer() {
             <Link
               to="/checkout"
               onClick={closeDrawer}
-              className="w-full flex items-center justify-center h-12 rounded-2xl bg-gray-900 hover:bg-pink-500 text-white font-inter text-sm font-semibold transition-colors"
+              className="w-full flex items-center justify-center h-12 rounded-2xl bg-gray-900 hover:bg-gray-700 text-white font-inter text-sm font-semibold transition-colors"
             >
               Checkout
             </Link>

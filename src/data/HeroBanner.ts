@@ -5,12 +5,7 @@ import banner4 from "../assets/Banner/nirvana-hero-sliding-banner-1.webp";
 import banner5 from "../assets/Banner/shop-by-concern-web-updated.webp";
 import banner6 from "../assets/Banner/web.webp";
 
-export interface HeroBannerItem {
-  id: number;
-  name: string;
-  image: string;
-  objectPosition?: string;
-}
+import type { HeroBannerItem } from "../types";
 
 export const heroBanners: HeroBannerItem[] = [
   { id: 1, name: "Rose Glow Collection",  image: banner1, objectPosition: "center center" },

@@ -5,6 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { useWishlist } from "../hooks/useWishlist";
 import { useCart } from "../hooks/useCart";
 import Button from "../components/ui/Button";
+import BreadCrumb from "../components/layout/Breadcrumb";
 
 export default function WishlistPage() {
   const { items, removeFromWishlist } = useWishlist();
@@ -35,17 +36,14 @@ export default function WishlistPage() {
   }
 
   return (
-    <div className="section">
+    <div>
+      <BreadCrumb
+        crumbs={[{ label: "Home", to: "/" }, { label: "Wishlist" }]}
+        title="My Wishlist"
+        subtitle={`${items.length} ${items.length === 1 ? "item" : "items"} saved`}
+      />
+      <div className="section">
       <div className="section-wrap py-10">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="font-abigeta text-3xl md:text-4xl text-gray-900">
-            My Wishlist
-          </h1>
-          <p className="font-inter text-sm text-gray-400 mt-1">
-            {items.length} {items.length === 1 ? "item" : "items"} saved
-          </p>
-        </div>
 
         {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -108,6 +106,7 @@ export default function WishlistPage() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

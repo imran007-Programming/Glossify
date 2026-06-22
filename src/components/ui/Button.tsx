@@ -1,25 +1,14 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonProps, ButtonVariant, ButtonSize } from "../../types";
 
-type Variant = "primary" | "pink" | "outline" | "ghost" | "success";
-type Size = "sm" | "md" | "lg";
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
-  size?: Size;
-  icon?: ReactNode;
-  fullWidth?: boolean;
-  children: ReactNode;
-}
-
-const variantStyles: Record<Variant, string> = {
-  primary: "bg-gray-900 hover:bg-pink-500 text-white disabled:opacity-50",
-  pink:    "bg-pink-500 hover:bg-pink-400 text-white disabled:opacity-50",
-  success: "bg-emerald-500 text-white disabled:opacity-50",
-  outline: "border border-gray-200 text-gray-700 hover:border-pink-400 hover:text-pink-500 bg-transparent disabled:opacity-50",
-  ghost:   "text-gray-400 hover:text-pink-500 bg-transparent disabled:opacity-50",
+const variantStyles: Record<ButtonVariant, string> = {
+  primary: "bg-gray-900 hover:bg-gray-700 text-white disabled:opacity-50",
+  pink:    "bg-pink-500 hover:bg-pink-600 text-white disabled:opacity-50",
+  success: "bg-emerald-500 hover:bg-emerald-600 text-white disabled:opacity-50",
+  outline: "border border-gray-200 text-gray-700 hover:bg-gray-100 hover:border-gray-300 bg-transparent disabled:opacity-50",
+  ghost:   "text-gray-400 hover:text-gray-600 hover:bg-gray-100 bg-transparent disabled:opacity-50",
 };
 
-const sizeStyles: Record<Size, string> = {
+const sizeStyles: Record<ButtonSize, string> = {
   sm: "h-9  px-4  text-xs  rounded-xl gap-1.5",
   md: "h-11 px-6  text-sm  rounded-xl gap-2",
   lg: "h-12 px-8  text-base rounded-2xl gap-2",

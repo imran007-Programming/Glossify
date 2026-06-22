@@ -1,11 +1,6 @@
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import type { StarRatingProps } from "../../types";
 
-interface StarRatingProps {
-  rating: number;
-  size?: number;
-}
-
-// rating calculations
 export default function StarRating({ rating, size = 14 }: StarRatingProps) {
   return (
     <span className="flex items-center gap-0.5">

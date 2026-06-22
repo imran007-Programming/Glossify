@@ -1,10 +1,4 @@
-import type { ReactNode } from 'react';
-
-interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
+import type { ModalProps } from "../../types";
 
 export default function Modal(_props: ModalProps) {
   return null;

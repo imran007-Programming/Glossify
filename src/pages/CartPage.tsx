@@ -3,6 +3,8 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 import { useCart } from "../hooks/useCart";
 import Button from "../components/ui/Button";
 import { ImCross } from "react-icons/im";
+import FreeShippingBar from "../components/cart/FreeShippingBar";
+import BreadCrumb from "../components/layout/Breadcrumb";
 
 export default function CartPage() {
   const { items, totalItems, totalPrice, updateQuantity, removeFromCart } =
@@ -27,7 +29,13 @@ export default function CartPage() {
   }
 
   return (
-    <div className="section">
+    <div>
+      <BreadCrumb
+        crumbs={[{ label: "Home", to: "/" }, { label: "Cart" }]}
+        title="Shopping Cart"
+        subtitle={`${totalItems} ${totalItems === 1 ? "item" : "items"} in your cart`}
+      />
+      <div className="section">
       <div className="section-wrap py-10">
         <div className="flex flex-col lg:flex-row gap-10">
           {/* ── Left: Items ── */}
@@ -37,6 +45,10 @@ export default function CartPage() {
               Shopping Cart{" "}
               <span className="text-gray-400">({totalItems})</span>
             </h1>
+
+            <div className="-mx-6 mb-4">
+              <FreeShippingBar total={totalPrice} />
+            </div>
 
             <div className="border-t border-gray-100">
               {items.map((item) => {
@@ -160,6 +172,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

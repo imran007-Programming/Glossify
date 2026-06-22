@@ -1,7 +1,4 @@
-interface BadgeProps {
-  label: string;
-  variant?: 'sale' | 'new' | 'best-seller' | 'top-rated';
-}
+import type { BadgeProps } from "../../types";
 
 export default function Badge(_props: BadgeProps) {
   return null;

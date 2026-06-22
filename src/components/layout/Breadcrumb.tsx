@@ -1,16 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsChevronRight, BsPercent, BsGift } from "react-icons/bs";
-
-interface Crumb {
-  label: string;
-  to?: string;
-}
-
-interface PageHeroProps {
-  crumbs: Crumb[];
-  title: string;
-  subtitle?: string;
-}
+import type { PageHeroProps } from "../../types";
 
 export default function BreadCrumb({ crumbs, title, subtitle }: PageHeroProps) {
   return (

@@ -6,20 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { toast } from "sonner";
-import type { CartItem, Product } from "../types";
-
-interface CartContextType {
-  items: CartItem[];
-  totalItems: number;
-  totalPrice: number;
-  isDrawerOpen: boolean;
-  addToCart: (product: Product, quantity?: number) => void;
-  removeFromCart: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
-  clearCart: () => void;
-  openDrawer: () => void;
-  closeDrawer: () => void;
-}
+import type { CartItem, Product, CartContextType } from "../types";
 
 export const CartContext = createContext<CartContextType | undefined>(
   undefined,

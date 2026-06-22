@@ -6,14 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { toast } from "sonner";
-import type { Product } from "../types";
-
-interface WishlistContextType {
-  items: Product[];
-  toggleWishlist: (product: Product) => void;
-  isWishlisted: (id: number) => boolean;
-  removeFromWishlist: (id: number) => void;
-}
+import type { Product, WishlistContextType } from "../types";
 
 export const WishlistContext = createContext<WishlistContextType | undefined>(
   undefined,

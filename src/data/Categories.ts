@@ -19,13 +19,7 @@ import haircareF   from "../assets/Features_category/haircare.jpg";
 import discountF   from "../assets/Features_category/Discount.jpg";
 import supplementF from "../assets/Features_category/supliment.webp";
 
-export interface CategoryItem {
-  id: number;
-  name: string;
-  image: string;
-  bg: string;
-  featuredImage?: string;
-}
+import type { CategoryItem } from "../types";
 
 export const categoriesData: CategoryItem[] = [
   { id: 1,  name: "Moisturizers",   image: moisturizer,   bg: "#fdf2f4", featuredImage: skincareF   },
